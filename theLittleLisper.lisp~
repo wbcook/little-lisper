@@ -171,13 +171,6 @@ jelly
 
 (Chapter 2)
 
-(defun lat (l)
-    (cond
-      ((null l) t)
-      ((atom (car l)) (lat (cdr l)))
-      (t nil)))
-      
-
 l1  (german chocolate cake)
 l2  (poppy seed cake)
 l3  ((linzer) (torte) ())
@@ -186,6 +179,14 @@ l5  (() ())
 a1  coffee
 a2  seed
 a3  poppy
+
+
+
+(defun lat (l)
+    (cond
+      ((null l) t)
+      ((atom (car l)) (lat (cdr l)))
+      (t nil)))
 
 (lat '(german chocolate (dark) cake))
 
@@ -208,3 +209,52 @@ a3  poppy
 
 (lat '(poppy))
 
+(null '(coffee))
+
+(eq 'coffee 'coffee)
+
+(eq 'coffee 'cake)
+
+
+
+(defun member (a l)
+  (cond
+    ((null l) nil)
+    (t (or
+         (eq (car l) a)
+         (member a (cdr l))))))
+
+(member 'coffee '(poppy seed cake))
+
+(member 'german '(german chocolate cake))
+
+(member 'seed '(poppy seed cake))
+
+(member 'poppy '((linzer) (torte) ()))
+
+(member 'torte '((linzer) (torte) ()))
+
+(lat '((linzer) (torte) ()))
+
+(member '() '(() ()))
+
+
+
+(defun member2 (a l)
+  (if (null l)
+      nil
+      (or
+        (eq (car l) a)
+        (member2 a (cdr l)))))
+
+(member2 'seed '(poppy seed cake))
+
+(member2 'coffee '(german chocolate cake))
+
+(member2 'torte '((linzer) (torte) ()))
+
+
+
+(defun lat2 (l)
+  (if (null l)
+      t
