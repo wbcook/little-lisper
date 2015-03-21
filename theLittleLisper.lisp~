@@ -253,8 +253,19 @@ a3  poppy
 
 (member2 'torte '((linzer) (torte) ()))
 
-
+(defun lat (l)
+    (cond
+      ((null l) t)
+      ((atom (car l)) (lat (cdr l)))
+      (t nil)))
 
 (defun lat2 (l)
   (if (null l)
       t
+      ((atom (car l)) (lat (cdr l)))))
+
+(lat '(atom))
+
+(lat '(atom (atom)))
+
+(lat2 '(atom))
