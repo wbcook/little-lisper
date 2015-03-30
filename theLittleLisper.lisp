@@ -262,12 +262,34 @@ a3  poppy
       (t nil)))
 
 (defun lat2 (l)
-  (if (null l)
-      t
-      (atom (car l) (lat (cdr l)))))
+  (if (null l) t ( (atom (car l)) (lat (cdr l)))))
+
+(defun lat3 (l)
+  (if (atom (car l)) (lat (cdr l)) nil))
 
 (lat '(atom))
 
 (lat '(atom (atom)))
 
 (lat2 '(atom))
+
+(lat2 '(atom (atom)))
+
+(lat3 '(atom))
+
+(lat3 '(atom (atom)))
+
+
+(lat3 '(german chocolate (dark) cake))
+
+(lat3 '(german))
+
+(lat3 '(poppy seed cake))
+
+(lat3 '((linzer) (torte) ()))
+
+(lat3 '((bleu cheese) (and) (red) (wine)))
+
+(lat3 '(() ()))
+
+(lat3 '((atom)))
