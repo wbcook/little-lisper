@@ -265,7 +265,7 @@ a3  poppy
   (if (null l) t ( (atom (car l)) (lat (cdr l)))))
 
 (defun lat3 (l)
-  (if (atom (car l)) (lat (cdr l)) nil))
+  (or (null l) (if (atom (car l)) (lat3 (cdr l)) nil)))
 
 (lat '(atom))
 
@@ -293,3 +293,4 @@ a3  poppy
 (lat3 '(() ()))
 
 (lat3 '((atom)))
+
