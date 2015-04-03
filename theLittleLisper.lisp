@@ -255,6 +255,8 @@ a3  poppy
 
 (atom 'chocolate)
 
+(2.4)
+
 (defun lat (l)
     (cond
       ((null l) t)
@@ -294,3 +296,21 @@ a3  poppy
 
 (lat3 '((atom)))
 
+(2.5)
+
+(defun nonlat (l)
+  
+
+(defun lat (l)
+    (cond
+      ((null l) t)
+      ((atom (car l)) (lat (cdr l)))
+      (t nil)))
+
+(lat '(german chocolate cake))
+
+(lat '(poppy seed cake))
+
+(lat '((linzer) (torte) ()))
+
+(lat '((bleu cheese) and (red) (wine)))
