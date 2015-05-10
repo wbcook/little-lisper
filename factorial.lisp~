@@ -1,0 +1,31 @@
+(defun fac (n)
+  (if
+    (<= n 1)
+      'bob
+      (* n (fac (- n 1)))
+    ))
+
+(fac 1)
+(fac 2)
+
+(defun fac2 (n)
+  (cond
+    ((<= n 1) t)
+    (* n (fac2 (- n 1)))
+    (t nil)))
+
+(fac2 1)
+(fac2 2)
+
+
+(* 2 2)
+(> 3 2)
+(> 3 5)
+(<= 3 3)
+(<= 2 3)
+(- 5 1)
+
+(defun lat (l)
+  (or (null l) (if (atom (car l)) (lat (cdr l)) nil)))
+
+(lat ())
